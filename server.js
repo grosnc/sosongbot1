@@ -22,6 +22,12 @@ var server = app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
+//local용
+/*
+var server = app.listen(8080, '0.0.0.0', function() {
+// print a message when the server starts listening
+console.log('server starting on localhost');
+});*/
 
 app.use(bodyParser.json());//body json
 app.use(bodyParser.urlencoded()); 
@@ -44,9 +50,9 @@ db.once('open', function() {
 });
 
 //keyboard routing
-app.use('/keyboard', require('/router/keyboard'));
+app.use('/keyboard', require('./router/keyboard'));
 
 //message routing
-app.use('/message', require('/router/message'));
+app.use('/message', require('./router/message'));
 
 //var router = require('./router/main')(app, fs); 
